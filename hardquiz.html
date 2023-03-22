@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globe Explorer - Hard Difficulty - A game about the World</title>
+    <link rel="stylesheet" href="style3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="master.css">
+    <link rel="icon" type="image/x-icon" href="pages/logo3.png">
+    <style>
+        html{
+                height: 100%;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+            body{
+                background-color: rgb(202, 194, 194);
+                font-family: 'Silkscreen', sans-serif;
+                width: 100%;
+                height: 100%;
+                margin: 0;
+            }
+            p, h1, h2, h3, h4, h5, h6{
+                margin-bottom: 0;
+            }
+            .sidebar {
+                height: 100%;
+                width: 30%;
+                position: fixed;
+                z-index: 2;
+                background-color: #bd9e9e;
+                padding: 15px;
+                color: rgb(11, 10, 10);
+                flex-direction: column;
+                float: left;
+            }
+            .sidebar2 {
+                height: 100%;
+                width: 30%;
+                position: absolute;
+                right: 0;
+                z-index: 2;
+                background-color: #bd9e9e;
+                padding: 15px;
+                color: rgb(11, 10, 10);
+                flex-direction: column;
+                float: right;
+            }
+            #content{
+                width: 100%;
+                height: 80%;
+            }
+            #top{
+                width: 95%;
+                margin-top: 2.5%;
+                margin-left: 2.5%;
+                margin-right: 2.5%;
+                background-color: rgb(59, 56, 47);
+                height: auto;
+                float: left;
+                text-align: center;
+                display: block;
+                padding: 5px;
+                color: rgb(206, 204, 197);
+            }
+            img{
+                width: 100%;
+            }
+            #rules{
+                height: 34px;
+                width: auto;
+                display: none;
+                position: absolute;
+                z-index: 1;
+                padding: 5px;
+                background-color: rgb(157, 147, 100);
+            }
+            #about{
+                height: 34px;
+                width: auto;
+                display: none;
+                position: absolute;
+                z-index: 1;
+                right: 0;
+                padding: 5px;
+                float: right;
+                background-color: rgb(157, 147, 100);
+            }
+            #center{
+                height: 34px;
+                width: 10%;
+                text-align: center;
+                display: none;
+                position: absolute;
+                z-index: 1;
+                left: 45%;
+                right: 45%;
+                padding: 5px;
+                background-color: rgb(157, 147, 100);
+            }
+            header{
+                width: 100%;
+                background-color: rgb(136, 143, 143);
+                text-align: center;
+                height: 54px;
+            }
+            button.style{
+                border: solid 1px antiquewhite;
+                background-color: antiquewhite;
+                font-size: 24px;
+            }
+            .grow{
+                transition: 1s ease;
+                opacity:0.75;
+            }
+            .grow:hover{
+                -webkit-transform: scale(1.01);
+                -ms-transform: scale(1.01);
+                transform: scale(1.01);
+                transition: 1s ease;
+                box-shadow:
+                1px 1px #373737,
+                2px 2px #373737,
+                3px 3px #373737,
+                4px 4px #373737,
+                5px 5px #373737,
+                6px 6px #373737;
+                -webkit-transform: translateX(-3px);
+                transform: translateX(-3px);
+                transition: .5s ease;
+                opacity:1;
+                transition: 1s ease;
+            }
+            ::-webkit-scrollbar{
+                width: 5px;
+            }
+            ::-webkit-scrollbar-thumb{
+                width: 4.5px;
+                background-color: black;
+            }
+            .scrollbox{
+                overflow: auto;
+            }
+            .scrollbox-inner p{
+                color: #000;
+            }
+            .clean{
+                text-decoration: none;
+                color: #000;
+            }
+            .clean:hover{
+                text-decoration: underline 1px #000;
+            }
+            #answerbox{
+                width: 45%;
+                float: left;
+                margin-left: 2.5%;
+                margin-right: 2.5%;
+                background-color: #373737;
+                margin-top: 2.5%;
+                color: white;
+                padding: 1%;
+            }
+            #answerbox1{
+                width: 45%;
+                float: left;
+                margin-left: 2.5%;
+                margin-right: 2.5%;
+                background-color: #373737;
+                margin-top: 2.5%;
+                color: white;
+                padding: 1%;
+            }
+            #answerbox2{
+                width: 45%;
+                float: left;
+                margin-left: 2.5%;
+                margin-right: 2.5%;
+                background-color: #373737;
+                margin-top: 2.5%;
+                color: white;
+                padding: 1%;
+            }
+            #answerbox3{
+                width: 45%;
+                float: left;
+                margin-left: 2.5%;
+                margin-right: 2.5%;
+                background-color: #373737;
+                margin-top: 2.5%;
+                color: white;
+                padding: 1%;
+            }
+            #submit{
+                padding: 1%;
+                border: none;
+                background-color: rgb(28, 182, 28);
+                color: white;
+                float: right;
+                margin-right: 2.5%;
+                margin-top: 2.5%;
+            }
+            #resubmit{
+                padding: 1%;
+                border: none;
+                background-color: rgb(28, 182, 28);
+                color: white;
+                float: right;
+                margin-right: 2.5%;
+                margin-top: 2.5%;
+            }
+            @media only screen and (max-width: 1600px) {
+                html {
+                    zoom: 80%;
+                }
+            }
+    </style>
+</head>
+<body>
+    <div id="mySidebar" class="sidebar" style="display: none;">
+        <a onclick="closing()"><h1 style="float: right; cursor: pointer;">&times;</h1></a>
+            <div class ="scrollbox">
+                <div class="scrollbar-inner">
+                    <p>
+                        <strong>How to play this game?</strong>
+                        <br><br>
+                        <strong>Globe Explorer</strong> is a game about the world, whether through its shape, flags, or facts. 
+                        <br><br> 
+                        There are three (3) difficulties, <strong>Easy, Medium, and Hard</strong>. 
+                        <br><br>
+                        The <strong>Easy</strong> difficulty contains easy questions. <br> (The world's largest country by land area: Russia)
+                        <br><br>
+                        The <strong>Medium</strong> difficulty contains medium questions. <br> (The only country the Canada borders: United States of America) 
+                        <br><br> 
+                        And the <strong>Hard</strong> difficulty contains hard questions. <br>(The most round country: Sierra Leone)
+                        <br><br>
+                        Questions may include <strong>flags, languages, their names, and anything related</strong>.
+                        <br><br>
+                        <strong>Take note</strong>, the quizzes go on a <strong>sequential navigation</strong>, which means after you submit your answer, you cannot go back to that said question.
+                    </p>
+                </div>
+            </div>
+      </div>
+      <div id="mySidebar2" class="sidebar2" style="display: none;">
+        <a onclick="closing2()"><h1 style="float: left; cursor: pointer;">&times;</h1></a>
+            <div class ="scrollbox">
+                <div class="scrollbar-inner">
+                    <p>
+                        <strong>Meet the Developers</strong>
+                        <br><br>
+                        <strong>Developers:</strong><br><br>Uno Andrei Kabigting<br>Janine Andrea Emmanuel<br>Xander Liam Keith Soliman
+                        <br><br> 
+                        <strong>Inspirations:</strong><br><br><a class="clean" href="https://worldle.teuteuf.fr/"><strong>Worldle</strong></a> by <a class="clean" href="https://twitter.com/teuteuf"><strong>Teuteuf</strong></a><br><a class="clean" href="https://www.geoguessr.com/"><strong>Geoguessr</strong></a><br><a class="clean" href="https://www.sporcle.com"><strong>Sporcle</strong></a>
+                    </p>
+                </div>
+            </div>
+      </div>
+    <header>
+        <h1>
+            <a style="padding-top: 5px; padding-bottom: 5px;" class="clean" href="index.html" onmouseover="showcenter()" onmouseout="byecenter()"><span style="font-weight: 400; font-size: 36px">Globe Explorer</span></a>
+            <button class="style" style="float: left; height: 54px; width: 100px;" onmouseover="showrules()" onmouseout="byerules()" onclick="testt()">&nbsp;&nbsp;&quest;&nbsp;&nbsp;</button>
+            <button class="style" style=" float: right; height: 54px; width: 100px;" onmouseover="showabout()" onmouseout="byeabout()" onclick="openaboutus()">&nbsp;&#9432;&nbsp;</button>
+        </h1>
+    </header>
+    <div id="content">
+        <div id="rules">
+            <p>The Game Rules</p>
+        </div>
+        <div id="about">
+            <p>About the Developers</p>
+        </div>
+        <div id="center">
+            <p>Homepage</p>
+        </div>
+    <div class="start_btn"><button>Start Quiz</button></div>
+
+    <div class="info_box">
+        <div class="info-title"><span>Some Rules of this Quiz</span></div>
+        <div class="info-list">
+            <div class="info">1. You will have only <span>25 seconds</span> per each question.</div>
+            <div class="info">2. Once you select your answer, it can't be undone and will be automatically checked.</div>
+            <div class="info">3. You can't select any option once timer goes off.</div>
+            <div class="info">4. You can't exit from the Quiz while you're playing.</div>
+            <div class="info">5. You'll get points on the basis of your correct answers.</div>
+        </div>
+        <div class="buttons">
+            <button class="quit">Exit Quiz</button>
+            <button class="restart">Continue</button>
+        </div>
+    </div>
+
+    <div class="quiz_box">
+        <header>
+            <div class="title">Hard</div>
+            <div class="timer">
+                <div class="time_left_txt">Time Left</div>
+                <div class="timer_sec">25</div>
+            </div>
+            <div class="time_line"></div>
+        </header>
+        <section>
+            <h2 style="display: none;">I</h2>
+            <div class="que_text">
+            </div>
+            <div class="option_list">
+            </div>
+        </section>
+
+        <footer>
+            <div class="total_que">
+            </div>
+            <button class="next_btn">Next ></button>
+        </footer>
+    </div>
+
+    <div class="result_box">
+        <div class="icon">
+            <i class="fa-solid fa-globe"></i>
+        </div>
+        <div class="complete_text">You've completed the Quiz!</div>
+        <div class="score_text">
+        </div>
+        <div class="buttons">
+            <button class="restart">Replay Quiz</button>
+            <button class="quit">Quit Quiz</button>
+        </div>
+    </div>
+    </div>
+    <script src="js/questions3.js"></script>
+    <script src="js/script3.js"></script>
+    <script>
+        function testt(){
+            document.getElementById("mySidebar").style.display = "flex";
+            document.getElementById("mySidebar2").style.display = "none";
+        }
+        function closing(){
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        function showrules(){
+            document.getElementById("rules").style.display = "block";
+        }
+        function byerules(){
+            document.getElementById("rules").style.display = "none"
+        }
+        function showabout(){
+            document.getElementById("about").style.display = "block";
+        }
+        function byeabout(){
+            document.getElementById("about").style.display = "none"
+        }
+        function showcolors(){
+            document.getElementById("easy").style.color = "white";
+        }
+        function byecolors(){
+            document.getElementById("easy").style.color = "rgb(39, 97, 55)";
+        }
+        function showcolors1(){
+            document.getElementById("normal").style.color = "white";
+        }
+        function byecolors1(){
+            document.getElementById("normal").style.color = "rgb(249, 203, 49)";
+        }
+        function showcolors2(){
+            document.getElementById("hard").style.color = "white";
+        }
+        function byecolors2(){
+            document.getElementById("hard").style.color = "rgb(165, 29, 29)";
+        }
+        function openaboutus(){
+            document.getElementById("mySidebar2").style.display = "flex";
+            document.getElementById("mySidebar").style.display = "none";
+        }
+        function closing2(){
+            document.getElementById("mySidebar2").style.display = "none";
+        }
+        function showcenter(){
+                document.getElementById("center").style.display = "block";
+            }
+            function byecenter(){
+                document.getElementById("center").style.display = "none";
+            }
+    </script>
+</body>
+</html>

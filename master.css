@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet');
+
+#content{
+    animation: transitionIn 0.75s;
+}
+#rules{
+    animation: transitionIn 0.5s;
+}
+#about{
+    animation: transitionIn 0.5s;
+}
+#center{
+    animation: transitionIn 0.5s;
+}
+.sidebar{
+    animation: transitionsidebar1 0.75s;
+}
+.sidebar2{
+    animation: transitionsidebar2 0.75s;
+}
+
+@keyframes transitionsidebar1{
+    from{
+        transform: translateX(-30%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+@keyframes transitionsidebar2{
+    from{
+        transform: translateX(30%);
+    }
+    to{
+        transform: translateX(0);
+    }
+}
+@keyframes transitionIn{
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+
+    }
+}
